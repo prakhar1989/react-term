@@ -15,17 +15,33 @@ var App = React.createClass({
     this.setState({
       commands: {
         'clear' : this.clearHistory,
+        'ls'    : this.listFiles,
         'intro' : this.showWelcomeMsg,
         'help'  : this.showHelp,
+        'cat'   : this.catFile,
         'source': this.openLink('https://github.com/prakhar1989/react-term/blob/master/src/app.js'),
         'github': this.openLink('http://github.com/prakhar1989'),
         'blog'  : this.openLink('http://prakhar.me')
       }
     });
   },
+  listFiles: function() {
+      this.addHistory("README.md");
+  },
   showWelcomeMsg: function() {
       this.addHistory("I'm Prakhar Srivastav and I'll be joining Columbia university this fall in the Computer Science department.");
       this.addHistory("Type `help` to see what all commands are available");
+  },
+  catFile: function(arg) {
+      if (arg === "README.md") {
+          this.addHistory('### REACT TERM');
+          this.addHistory("A couple of days back, I got an email from Columbia (the university that Im stated to join) informing me that my new email ID and other student IT services were ready. Hosting my own webpage on a university's domain had long been a dream of mine, so as soon as I learnt about having some server space on the university's server I got excited wanted to put something interesting. Since I already have " +
+                          "a boring about me page, I went " +
+                          "with something different and built a simple terminal emulator in React!");
+          this.addHistory("type `source` to view the source code");
+      } else {
+          this.addHistory("cat: " +  arg + ": No such file or directory");
+      }
   },
   openLink: function(link) {
       return function() {
@@ -39,6 +55,8 @@ var App = React.createClass({
       this.addHistory("intro - print intro message");
       this.addHistory("blog - read some stuff that I've written");
       this.addHistory("clear - clear screen");
+      this.addHistory("cat - print contents of a file");
+      this.addHistory("ls - list files");
   },
   componentDidMount: function() {
       var term = this.refs.term.getDOMNode();
@@ -48,17 +66,19 @@ var App = React.createClass({
       term.focus();
   },
   handleInput: function(e) {
-      var input = this.refs.term.getDOMNode().value;
       if (e.key === "Enter") {
+          var input_text = this.refs.term.getDOMNode().value;
+          var input_array = input_text.split(' ');
+          var input = input_array[0];
+          var arg = input_array[1];
           var command = this.state.commands[input];
 
-          // log command
-          this.addHistory(this.state.prompt + " " + input);
+          this.addHistory(this.state.prompt + " " + input_text);
 
           if (command === undefined) {
               this.addHistory("sh: command not found: " + input);
           } else {
-              command();
+              command(arg);
           }
           this.clearInput();
       }
