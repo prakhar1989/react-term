@@ -17,7 +17,7 @@ var App = React.createClass({
         'clear' : this.clearHistory,
         'intro' : this.showWelcomeMsg,
         'help'  : this.showHelp,
-        'source': this.openLink('http://github.com/prakhar1989/react-surveyman'),
+        'source': this.openLink('https://github.com/prakhar1989/react-term/blob/master/src/app.js'),
         'github': this.openLink('http://github.com/prakhar1989'),
         'blog'  : this.openLink('http://prakhar.me')
       }
