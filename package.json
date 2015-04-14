@@ -1,0 +1,24 @@
+{
+  "name": "react-shopping-cart-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "reactcart.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "watchify -t reactify ./src/app.js -o ./build/bundle.js -v",
+    "dist": "npm run remove-dist && npm run build-standalone",
+    "remove-dist": "rm build/*.js",
+    "build-standalone": "NODE_ENV=production browserify -t reactify ./src/app.js | uglifyjs -mc > build/main.min.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "babelify": "^5.0.4",
+    "browserify": "^9.0.3",
+    "react": "^0.13.1",
+    "reactify": "^1.1.0",
+    "uglify-js": "^2.4.20",
+    "underscore": "^1.8.3",
+    "watchify": "^3.1.0"
+  }
+}
