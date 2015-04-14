@@ -55,14 +55,11 @@ var App = React.createClass({
           // log command
           this.addHistory(this.state.prompt + " " + input);
 
-          // run function
           if (command === undefined) {
               this.addHistory("sh: command not found: " + input);
           } else {
               command();
           }
-
-          // clear 
           this.clearInput();
       }
   },
