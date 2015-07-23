@@ -65,6 +65,11 @@ var App = React.createClass({
       this.showWelcomeMsg();
       term.focus();
   },
+  componentDidUpdate: function() {
+      var el = React.findDOMNode(this);
+      var container = document.getElementsByClassName('container')[0];
+      container.scrollTop = el.scrollHeight;
+  },
   handleInput: function(e) {
       if (e.key === "Enter") {
           var input_text = this.refs.term.getDOMNode().value;
