@@ -16,7 +16,7 @@
       #app, div.input-area {
         height: 100%;
       }
-      div.container {
+      div#main {
           max-width: 560px;
           background: #2b303b;
           border-radius: 5px;
@@ -43,9 +43,11 @@
       }
       p { 
         margin-bottom: 0;
+        line-height: 21px;
       }
       #bar {
         height: 30px;
+        max-width: 560px;
         background: black;
         border-radius: 5px;
       }
@@ -56,15 +58,15 @@
     </style>
 </head>
 <body>
-    <div class="container">
+      <div id="bar" class='container'>
+        <svg height="20" width="100">
+          <circle cx="24" cy="14" r="5" fill="#bf616a" />
+          <circle cx="44" cy="14" r="5" fill="#ebcb8b" />
+          <circle cx="64" cy="14" r="5" fill="#a3be8c" />
+        </svg>
+      </div>
+    <div class="container" id="main">
       <div class="holder">
-        <div id="bar">
-          <svg height="20" width="100">
-            <circle cx="24" cy="14" r="5" fill="#bf616a" />
-            <circle cx="44" cy="14" r="5" fill="#ebcb8b" />
-            <circle cx="64" cy="14" r="5" fill="#a3be8c" />
-          </svg>
-        </div>
         <div id="content">
           <div id="app"></div>
         </div>

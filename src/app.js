@@ -67,7 +67,8 @@ var App = React.createClass({
   },
   componentDidUpdate: function() {
       var el = React.findDOMNode(this);
-      var container = document.getElementsByClassName('container')[0];
+      //var container = document.getElementsByClassName('container')[0];
+      var container = document.getElementById("main");
       container.scrollTop = el.scrollHeight;
   },
   handleInput: function(e) {
