@@ -21,7 +21,8 @@ var App = React.createClass({
         'cat'   : this.catFile,
         'source': this.openLink('https://github.com/prakhar1989/react-term/blob/master/src/app.js'),
         'github': this.openLink('http://github.com/prakhar1989'),
-        'blog'  : this.openLink('http://prakhar.me')
+        'blog'  : this.openLink('http://prakhar.me'),
+        'resume': this.openLink('https://github.com/prakhar1989/cv/blob/master/Resume.pdf')
       }
     });
   },
@@ -29,7 +30,7 @@ var App = React.createClass({
       this.addHistory("README.md");
   },
   showWelcomeMsg: function() {
-      this.addHistory("I'm Prakhar Srivastav and I'll be joining Columbia university this fall in the Computer Science department.");
+      this.addHistory("Hello, I'm Prakhar Srivastav, a graduate student in the Computer Science department (Machine Learning track).");
       this.addHistory("Type `help` to see what all commands are available");
   },
   catFile: function(arg) {
@@ -57,6 +58,7 @@ var App = React.createClass({
       this.addHistory("clear - clear screen");
       this.addHistory("cat - print contents of a file");
       this.addHistory("ls - list files");
+      this.addHistory("resume - view my resume");
   },
   componentDidMount: function() {
       var term = this.refs.term.getDOMNode();
